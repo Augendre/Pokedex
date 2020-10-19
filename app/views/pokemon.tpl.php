@@ -6,7 +6,7 @@ $url = $router->generate('pokemonRoute');
 
 <main>
     <div class="card-body title-details d-flex justify-content-center">
-            <h3 class="details-title">Détails de <?= $pokemonChoose->getNom();?></h3>
+        <h3 class="details-title">Détails de <?= $pokemonChoose->getNom();?></h3>
     </div>
     <div class="d-flex justify-content-center">
         <div class="col-md-4 img-box">

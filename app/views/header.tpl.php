@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-light mx-3 my-3 mynav">
+        <nav class="navbar navbar-expand-lg bg-light mx-3 my-3 fixed-top mynav">
             <a class=" my-nav-link title" href="<?= $baseUri; ?>">Pokédex</a>
             <div class="" id="navbarNav">
                 <ul class="navbar-nav">
@@ -20,7 +20,7 @@
                         <a class="nav-link my-nav-link" href="<?= $baseUri; ?>">Liste</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link my-nav-link" href="#">Types</a>
+                        <a class="nav-link my-nav-link" href="<?= $baseUri; ?>/types">Types</a>
                     </li>
                 </ul>
             </div>

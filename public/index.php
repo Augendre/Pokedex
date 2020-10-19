@@ -34,6 +34,16 @@ $router->map(
     'pokemonRoute'
 );
 
+$router->map(
+    'GET',
+    '/types',
+    [
+        'controller' => 'Pokedex\Controllers\TypeController',
+        'action' => 'list'
+    ],
+    'typeRoute'
+);
+
 $match = $router->match();
 
 if($match) {

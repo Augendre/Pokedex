@@ -4,7 +4,7 @@ $url = $router->generate('homeRoute');
 
 ?>
 
-<div class="card-group d-flex justify-content-center">
+<div class="card-group d-flex justify-content-center mt-5">
 
 <?php 
 

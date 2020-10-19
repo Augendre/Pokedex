@@ -31,6 +31,21 @@ class Type extends CoreModel
         return $object;
     }
 
+    public function findAll()
+    {
+        $sql = "
+        SELECT *
+        FROM `type`
+        ORDER BY `id` ASC
+        ";
+
+        $pdo = Database::getPDO();
+        $statement = $pdo->query($sql);
+        $typeList = $statement->fetchAll(PDO::FETCH_CLASS, 'Pokedex\Models\Type');
+
+        return $typeList;
+    }
+
     /**
      * Get the value of name
      */ 
