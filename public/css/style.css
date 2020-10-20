@@ -1,3 +1,5 @@
+/*? General */
+
 body {
     font-family: 'Bree Serif', serif;
     background-color: #C14040;
@@ -6,13 +8,16 @@ body {
 
 main {
     color: white;
+    margin-top: 8em;
 }
 
 a:hover {
     text-decoration: none;
 }
 
-/* Header */
+
+/*? header */
+
 .mynav {
     border-radius: 21px;
     display: flex;
@@ -32,7 +37,9 @@ a:hover {
     font-size: 1.6em;
 }
 
-/* Home */
+
+/*? home.tpl */
+
 .card {
     background-color: #982C2C;
     border-radius: 5em;
@@ -50,7 +57,37 @@ a:hover {
     color: coral;
 }
 
-/* Pokemon details */
+
+/*? types.tpl */
+.type-btn-list {
+    width: 24%;
+    max-width: 24%;
+}
+
+.type-btn-list:hover {
+    box-shadow: 0 14px 28px #00000040, 0 10px 10px #00000038;
+}
+
+.type-link-list{
+    color: white;
+}
+
+.type-link-list:hover {
+    box-shadow: none;
+    color: white;
+}
+
+.type-link-list:visited {
+    color: white;
+}
+
+
+/*? pokemon.tpl */
+
+.type-card {
+    border-radius: 10px;
+}
+
 .type-link {
     color: white;
     text-decoration: none;
@@ -95,25 +132,20 @@ th, td {
     color: #EFE3E3;
 }
 
-/* Type list */
-.type-btn-list {
-    width: 24%;
-    max-width: 24%;
+/*? type.tpl */
+
+.no-pok {
+    text-align: center;
 }
 
-.type-btn-list:hover {
-    box-shadow: 0 14px 28px #00000040, 0 10px 10px #00000038;
+.no-pok-content {
+    font-size: 2em;
 }
 
-.type-link-list{
-    color: white;
+.back-type-list {
+    color:white;
 }
 
-.type-link-list:hover {
-    box-shadow: none;
-    color: white;
-}
-
-.type-link-list:visited {
-    color: white;
+.back-type-list:hover {
+    color: coral;
 }

@@ -13,8 +13,21 @@ class TypeController extends CoreController
 
         $typeList = $typeModel->findAll();
 
-        $this->show('type', [
+        $this->show('types', [
             'typeList' => $typeList
+        ]);
+    }
+
+    public function typeList($params = [])
+    {
+        $typeId = $params['id'];
+
+        $typeModel = new Type();
+        $pokemonTypeList = $typeModel->findType($typeId);
+
+        $this->show('type', [
+            'id' => $typeId,
+            'pokemonTypeList' => $pokemonTypeList
         ]);
     }
 }

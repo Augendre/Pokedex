@@ -10,6 +10,64 @@ class Type extends CoreModel
     private $name;
     private $color;
 
+    // propriété stockant les Pokemons (instance de la class Pokemon)
+    private $pokemons = [];
+
+    public function addPokemon($pokemon)
+    {
+        $this->pokemons[] = $pokemon;
+    }
+    
+    public function getPokemons()
+    {
+        return $this->pokemons;
+    }
+    
+    public function findAll()
+    {
+        $sql = "
+        SELECT *
+        FROM `type`
+        ORDER BY `id` ASC
+        ";
+        
+        $pdo = Database::getPDO();
+        $statement = $pdo->query($sql);
+        $typeList = $statement->fetchAll(PDO::FETCH_CLASS, 'Pokedex\Models\Type');
+        
+        return $typeList;
+    }
+    
+    public function findType($id)
+    {
+        $sql = "
+        SELECT
+        type.id as type_id,
+        type.name as type_name,
+        type.color as type_color,
+
+        pokemon.id as pokemon_id,
+        pokemon.nom as pokemon_nom,
+        pokemon.numero as pokemon_numero
+
+        FROM `type`
+
+        INNER JOIN `pokemon_type`
+        ON `type`.`id` = `pokemon_type`.`type_id`
+
+        INNER JOIN `pokemon`
+        ON `pokemon`.`numero` =  `pokemon_type`.`pokemon_numero`
+
+        WHERE `type`.`id` = " . $id;
+
+        $pdo = Database::getPDO();
+        $statement = $pdo->query($sql);
+
+        $results = $statement->fetchAll();
+
+        return $results;
+    }
+    
     public function findTypeForPokemon()
     {
         // Instanciation de l'objet PDO() pour se connecter à la DB
@@ -31,21 +89,10 @@ class Type extends CoreModel
         return $object;
     }
 
-    public function findAll()
-    {
-        $sql = "
-        SELECT *
-        FROM `type`
-        ORDER BY `id` ASC
-        ";
-
-        $pdo = Database::getPDO();
-        $statement = $pdo->query($sql);
-        $typeList = $statement->fetchAll(PDO::FETCH_CLASS, 'Pokedex\Models\Type');
-
-        return $typeList;
-    }
-
+    // =======================
+        /* Guetters and Setters */
+    // =======================
+    
     /**
      * Get the value of name
      */ 

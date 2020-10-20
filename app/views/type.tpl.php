@@ -1,18 +1,41 @@
 <?php
 
+// route correspondante
 $url = $router->generate('typeRoute');
 
 ?>
 
-<main>
-    <h3 class="types-title ml-3 mb-3" style="margin-top:4em;">Cliquez sur un type pour voir tous les Pokémon de ce type</h3>
-    <div class="btn-group d-flex flex-wrap mx-3" role="group" aria-label="types">
+<div class="card-group d-flex justify-content-center">
 
-<?php foreach ($typeList as $currentType): ?>
+<?php 
 
-    <button type="button" class="btn mx-1 my-1 rounded type-btn-list " style="background-color: #<?= $currentType->getColor(); ?>">
-        <a class="type-link-list" style="background-color: #<?= $currentType->getColor(); ?>; padding: 0.5rem 2rem; margin: 1rem; border-radius: 5px;" href="#"><?= $currentType->getName(); ?></a>
-    </button>
+// Si $pokemonList n'est pas vide alors on peut afficher les données
+if (!empty($pokemonTypeList)) :
+    foreach ($pokemonTypeList as $currentPokemon => $value) :
 
+?>
 
-<?php endforeach; ?>
+<div class="col-4 mb-4">
+    <div class="card text-center border shadow black">
+        <img src="<?= $baseUri . "/img" . '/' . $value['pokemon_numero'] . '.png';?>" class="card-img-top p-4" alt="<?= $value['pokemon_nom'] ?>">
+        <div class="card-body">      
+        <p class="card-text"><a  class="link" href="<?= $baseUri . '/pokemon/' . $value['pokemon_id']; ?>">#<?= $value['pokemon_numero']; ?> <?= $value['pokemon_nom']; ?></a></p>
+        </div>
+    </div>
+</div>
+
+<?php
+
+endforeach; 
+
+// Sinon message indicatif de l'absence de pokémon et lien vers la page des types
+else :
+
+?>
+
+<div class="no-pok">
+    <p class="no-pok-content">Actuellement, aucun Pokemon n'appartient à ce type</p>
+    <a class="back-type-list" href="<?= $baseUri . '/type'; ?>">Retour aux Types</a>
+</div>
+
+<?php endif; ?>

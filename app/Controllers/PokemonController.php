@@ -18,7 +18,7 @@ class PokemonController extends CoreController
         $typeModel = new Type();
         $typeForView = $typeModel->findTypeForPokemon();
 
-        $this->show('pokemon',[
+        $this->show('pokemon', [
             'id' => $pokemonNumber,
             'pokemonChoose' => $pokemonChoose,
             'typeForView' => $typeForView

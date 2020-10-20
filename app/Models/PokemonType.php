@@ -10,6 +10,10 @@ class PokemonType extends CoreModel
     private $pokemon_numero;
     private $type_id;
 
+    // =======================
+        /* Guetters and Setters */
+    // =======================
+    
     /**
      * Get the value of pokemon_numero
      */ 

@@ -34,12 +34,24 @@ $router->map(
     'pokemonRoute'
 );
 
+    // Pour la page listant les types
 $router->map(
     'GET',
-    '/types',
+    '/type',
     [
         'controller' => 'Pokedex\Controllers\TypeController',
         'action' => 'list'
+    ],
+    'typesRoute'
+);
+
+    // Pour la page d'un type
+$router->map(
+    'GET',
+    '/type/[i:id]',
+    [
+        'controller' => 'Pokedex\Controllers\TypeController',
+        'action' => 'typeList'
     ],
     'typeRoute'
 );

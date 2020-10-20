@@ -16,7 +16,7 @@ class Pokemon extends CoreModel
     private $vitesse;
     private $numero;
 
-    //cette propriété stocke les Types (attention ce sont des instance de classe Type() - Models/Type.php)
+    // propriété stockant les Types (instance de la class Type)
     private $types = [];
 
     public function addType($type)
@@ -24,12 +24,10 @@ class Pokemon extends CoreModel
         $this->types[] = $type;
     }
 
-
     public function getTypes()
     {
         return $this->types;
     }
-
 
     public function findAll()
     {
@@ -48,19 +46,19 @@ class Pokemon extends CoreModel
     {
         $sql = "
             SELECT
-                pokemon.id as pokemon_id,
-                pokemon.nom as pokemon_nom,
-                pokemon.pv as  pokemon_pv,
-                pokemon.attaque as pokemon_attaque,
-                pokemon.defense as pokemon_defense,
-                pokemon.attaque_spe as  pokemon_attaque_spe,
-                pokemon.defense_spe as pokemon_defense_spe,
-                pokemon.vitesse as pokemon_vitesse,
-                pokemon.numero as pokemon_numero,
+            pokemon.id as pokemon_id,
+            pokemon.nom as pokemon_nom,
+            pokemon.pv as  pokemon_pv,
+            pokemon.attaque as pokemon_attaque,
+            pokemon.defense as pokemon_defense,
+            pokemon.attaque_spe as  pokemon_attaque_spe,
+            pokemon.defense_spe as pokemon_defense_spe,
+            pokemon.vitesse as pokemon_vitesse,
+            pokemon.numero as pokemon_numero,
 
-                type.id as type_id,
-                type.name as type_name,
-                type.color as type_color
+            type.id as type_id,
+            type.name as type_name,
+            type.color as type_color
 
             FROM `pokemon`
 
@@ -77,13 +75,6 @@ class Pokemon extends CoreModel
 
 
         $resultats = $statement->fetchAll();
-
-
-        /*
-        dump($resultats);
-        echo '<hr/>';
-        echo '<hr/>';
-        */
 
         $pokemon = new Pokemon();
 
@@ -118,26 +109,37 @@ class Pokemon extends CoreModel
             //les types sont stockés dans la propriété $types (voir la déclaration des propriétés de la classe +- ligne 19)
 
             $pokemon->addType($type); 
-
-            //dump($ligne);
-            /*
-            dump($type);
-            dump($pokemon);
-            
-            echo '<hr/>';
-            echo '<hr/>';
-            */
-
         }
 
-        //$pokemonChoose = $statement->fetchAll(PDO::FETCH_CLASS, 'Pokedex\Models\Pokemon');
-
-        //dump($pokemonChoose);
         return $pokemon;
 
     }
 
-    
+    public function findPokemonType()
+    {
+        // Conenction DB
+        $pdo = Database::getPDO();
+
+        // Requête SQL
+        $sql = "
+        SELECT *
+        FROM `pokemon`
+        ";
+
+        // Exécution requête
+        $pdoStatement = $pdo->query($sql);
+
+        // Récupération de la réponse
+        $object = $pdoStatement->fetchObject('Pokedex\Models\Pokemon');
+
+        // On retourne l'objet
+        return $object;
+    }
+
+    // =======================
+        /* Guetters and Setters */
+    // =======================
+
     /**
      * Get the value of nom
      */ 
