@@ -21,14 +21,16 @@ if(isset($_SERVER['HTTP_REFERER'])) {
         <div class="card-body">
             <h4 class="card-text title-name"><?= '#' . $pokemonChoose->getNumero() .' ' . $pokemonChoose->getNom(); ?></h4>
             <div class="btn-group" role="group" aria-label="types">
-            <?php 
-                $types = $pokemonChoose->getTypes();
 
-                foreach($types as $currentType): ?>
-                    <div class= "btn" style="background-color: <?= $currentType->getColor(); ?>">
-                        <a class="type-link" style="background-color: #<?= $currentType->getColor(); ?>; padding: 0.5rem 2rem; margin: 1rem; border-radius: 5px" href="<?= $baseUri . '/type/' . $currentType->getId(); ?>"><?= $currentType->getName(); ?></a>
-                    </div>
+            <?php 
+            $types = $pokemonChoose->getTypes();
+
+            foreach($types as $currentType): ?>
+                <div class= "btn" style="background-color: <?= $currentType->getColor(); ?>">
+                    <a class="type-link" style="background-color: #<?= $currentType->getColor(); ?>; padding: 0.5rem 2rem; margin: 1rem; border-radius: 5px" href="<?= $baseUri . '/type/' . $currentType->getId(); ?>"><?= $currentType->getName(); ?></a>
+                </div>
             <?php endforeach ?>
+            
             </div>
             <h5 class="mt-3">Statistiques</h5>
             <table class="table table-borderless table-sm">                        
