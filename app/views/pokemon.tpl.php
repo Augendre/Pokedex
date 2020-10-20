@@ -26,7 +26,7 @@ if(isset($_SERVER['HTTP_REFERER'])) {
 
                 foreach($types as $currentType): ?>
                     <div class= "btn" style="background-color: <?= $currentType->getColor(); ?>">
-                        <a class="type-link" style="background-color: #<?= $currentType->getColor(); ?>; padding: 0.5rem 2rem; margin: 1rem; border-radius: 5px" href=""><?= $currentType->getName(); ?></a>
+                        <a class="type-link" style="background-color: #<?= $currentType->getColor(); ?>; padding: 0.5rem 2rem; margin: 1rem; border-radius: 5px" href="<?= $baseUri . '/type/' . $currentType->getId(); ?>"><?= $currentType->getName(); ?></a>
                     </div>
             <?php endforeach ?>
             </div>
